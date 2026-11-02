@@ -1,0 +1,893 @@
+/* ===== متغیرهای رنگ و فونت ===== */
+:root {
+  --accent: #FFC400;
+  --accent-dark: #E0A800;
+  --text: #1C1C1C;
+  --muted: #6B6B6B;
+  --bg: #FAFAF7;
+  --card: #FFFFFF;
+  --border: #ECECEC;
+  --danger: #D93025;
+  --success: #1E8E3E;
+  --radius: 14px;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-weight: 800; line-height: 1.4; }
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.4rem; margin-bottom: 1rem; }
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+section { padding: 2.5rem 0; }
+
+/* ===== هدر ===== */
+#site-header {
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 0.6rem; font-weight: 800; }
+.brand-mark {
+  background: var(--accent);
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-family: monospace;
+  font-weight: 800;
+}
+.main-nav { display: flex; gap: 1.4rem; }
+.main-nav a { color: var(--muted); font-weight: 600; transition: color 0.2s; }
+.main-nav a:hover, .main-nav a.active { color: var(--text); }
+.main-nav a.active { border-bottom: 2px solid var(--accent); }
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+}
+.cart-badge {
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 0 0.55rem;
+  font-size: 0.85rem;
+}
+
+/* ===== دکمه‌ها ===== */
+.btn {
+  display: inline-block;
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.2s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-primary { background: var(--accent); border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent-dark); }
+
+/* ===== بخش هیرو ===== */
+.hero {
+  background: linear-gradient(135deg, #FFF8D6 0%, #FFFFFF 70%);
+  padding: 4rem 0;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.hero h1 { font-size: 2.2rem; margin-bottom: 0.8rem; }
+.hero p { color: var(--muted); margin-bottom: 1.5rem; max-width: 46ch; }
+.hero-visual {
+  background: var(--accent);
+  border-radius: 24px;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  font-size: 5rem;
+  box-shadow: var(--shadow);
+}
+
+/* ===== دسته‌بندی‌ها ===== */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+}
+.category-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  text-align: center;
+  font-weight: 700;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.category-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+
+/* ===== کارت محصول ===== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+.product-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.product-image {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: #F4F4F0;
+  display: grid;
+  place-items: center;
+}
+.product-image img { width: 100%; height: 100%; object-fit: cover; }
+.product-body { padding: 1rem; }
+.product-body h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+.price { font-weight: 800; color: var(--text); }
+.price.big { font-size: 1.4rem; margin: 0.6rem 0; }
+
+.placeholder {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--accent-dark);
+  opacity: 0.7;
+}
+.placeholder.big { font-size: 5rem; }
+
+.badge-out {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--danger);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* ===== صفحه‌ی محصولات ===== */
+.page-head { padding: 2rem 0 1rem; }
+.filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.filter-chip {
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.filter-chip.active { background: var(--accent); border-color: var(--accent); }
+
+/* ===== صفحه‌ی جزئیات محصول ===== */
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+  margin: 2rem 0;
+}
+.detail-image {
+  background: #F4F4F0;
+  border-radius: var(--radius);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.detail-image img { width: 100%; height: 100%; object-fit: cover; }
+.crumb a { color: var(--muted); font-size: 0.9rem; }
+.desc { color: var(--muted); margin-bottom: 1rem; }
+.stock { font-weight: 700; margin-bottom: 1.2rem; }
+.stock.in { color: var(--success); }
+.stock.out { color: var(--danger); }
+.qty-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+.qty-row input {
+  width: 80px;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+}
+.added-msg { color: var(--success); margin-top: 0.8rem; font-weight: 700; }
+
+/* ===== سبد خرید ===== */
+.cart-list {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 1.2rem;
+  margin: 2rem 0 1rem;
+}
+.cart-row {
+  display: grid;
+  grid-template-columns: 2fr auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.cart-row:last-child { border-bottom: none; }
+.cart-name a { font-weight: 700; }
+.cart-line { font-weight: 700; }
+.qty-control { display: flex; align-items: center; gap: 0.5rem; }
+.qty-control button {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--danger);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+}
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+/* ===== فرم ثبت سفارش ===== */
+.checkout {
+  max-width: 560px;
+  margin: 2rem auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+}
+.checkout-summary { margin-bottom: 1.2rem; }
+.form-row { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+.form-row label { font-weight: 700; font-size: 0.9rem; }
+.form-row input, .form-row textarea {
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: var(--bg);
+}
+.form-row input:focus, .form-row textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.error {
+  color: var(--danger);
+  background: #FDECEA;
+  padding: 0.6rem 0.9rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.success-box {
+  text-align: center;
+  padding: 1rem;
+}
+.success-box .big-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+
+/* ===== تماس با ما ===== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  align-items: start;
+}
+.contact-info { display: grid; gap: 1rem; }
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+}
+.contact-card h3 { font-size: 1rem; color: var(--accent-dark); margin-bottom: 0.3rem; }
+.hours { list-style: none; }
+.hours li { padding: 0.2rem 0; }
+.hours span { font-weight: 700; }
+.shop-photo {
+  background: #F4F4F0;
+  border-radius: 20px;
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.shop-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ===== عمومی ===== */
+.empty { color: var(--muted); padding: 2rem 0; text-align: center; }
+.center { text-align: center; }
+[hidden] { display: none !important; }
+
+/* ===== فوتر ===== */
+#site-footer {
+  background: var(--text);
+  color: #E8E8E8;
+  margin-top: 3rem;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2.5rem 0 1.5rem;
+}
+.footer-inner p { color: #bdbdbd; font-size: 0.92rem; }
+.footer-bottom {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid #333;
+  font-size: 0.85rem;
+  color: #999;
+}
+
+/* ===== واکنش‌گرا (موبایل) ===== */
+@media (max-width: 760px) {
+  .hero-inner, .detail, .contact-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.7rem; }
+  .cart-row { grid-template-columns: 1fr auto; }
+  .cart-row .qty-control, .cart-row .cart-line, .cart-row .remove-btn { justify-self: start; }
+  .main-nav { gap: 0.9rem; font-size: 0.9rem; }
+}
+
+/* =========================================================
+   نسخه‌ی ۲: پس‌زمینه‌ی تصویری، لودینگ، چت، کارت به کارت، پنل
+   ========================================================= */
+
+/* ----- پس‌زمینه‌ی تصویری هیرو و فوتر ----- */
+.hero {
+  background:
+    linear-gradient(120deg, rgba(255, 196, 0, 0.88), rgba(28, 28, 28, 0.80)),
+    url("../images/tools-bg.jpg") center / cover no-repeat;
+  color: #fff;
+  padding: 5rem 0;
+}
+.hero h1 { color: #fff; }
+.hero p { color: #f3f3f3; }
+.hero .btn { background: #fff; border-color: #fff; color: var(--text); }
+.hero-visual {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 5rem;
+}
+
+#site-footer {
+  background:
+    linear-gradient(rgba(20, 20, 20, 0.90), rgba(20, 20, 20, 0.95)),
+    url("../images/tools-bg.jpg") center / cover no-repeat;
+}
+
+.page-head {
+  background:
+    linear-gradient(rgba(28, 28, 28, 0.55), rgba(28, 28, 28, 0.75)),
+    url("../images/tools-bg.jpg") center / cover no-repeat;
+  color: #fff;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  margin-top: 2rem;
+}
+.page-head h1 { color: #fff; }
+
+/* ----- دکمه‌ی ورود پنل در هدر ----- */
+.header-actions { display: flex; align-items: center; gap: 0.6rem; }
+.admin-link {
+  font-size: 0.85rem;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.admin-link:hover { color: var(--text); border-color: var(--accent); }
+
+/* ----- کارت به کارت و ثبت سفارش ----- */
+.checkout-total { margin-bottom: 1rem; }
+.order-items { padding-right: 1.2rem; margin-bottom: 0.8rem; color: var(--muted); }
+.order-code { margin-bottom: 0.8rem; }
+.pay-box {
+  background: var(--bg);
+  border: 1px dashed var(--accent);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0 1.4rem;
+}
+.card-num { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.05em; }
+.hint { color: var(--muted); font-size: 0.88rem; }
+
+/* ----- چت آنلاین ----- */
+.chat-fab {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  font-size: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  z-index: 900;
+  transition: transform 0.2s;
+}
+.chat-fab:hover { transform: scale(1.08); }
+.chat-panel {
+  position: fixed;
+  left: 20px;
+  bottom: 90px;
+  width: 320px;
+  max-width: calc(100vw - 40px);
+  height: 430px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 900;
+}
+.chat-head {
+  background: var(--text);
+  color: #fff;
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+}
+.chat-head button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.chat-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  background: var(--bg);
+}
+.msg {
+  max-width: 80%;
+  padding: 0.5rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+.msg span { white-space: pre-wrap; }
+.msg-customer { align-self: flex-start; background: var(--accent); }
+.msg-admin, .msg-bot {
+  align-self: flex-end;
+  background: #fff;
+  border: 1px solid var(--border);
+}
+.chat-form {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.7rem;
+  border-top: 1px solid var(--border);
+}
+.chat-form input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+}
+.chat-form .btn { padding: 0.6rem 1rem; }
+
+/* ----- لودینگ انیمیشنی: تکه‌ها به هم وصل می‌شوند ----- */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  transition: opacity 0.7s ease, visibility 0.7s;
+}
+.loader.hide { opacity: 0; visibility: hidden; }
+
+.loader-logo {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  filter: drop-shadow(0 12px 28px rgba(255, 196, 0, 0.4));
+  animation: logoPulse 1s ease-in-out 1.5s both;
+}
+.loader-logo::after {
+  content: "ST";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 54px;
+  height: 54px;
+  margin: -27px 0 0 -27px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: var(--text);
+  opacity: 0;
+  animation: fadeIn 0.4s 1.7s forwards;
+}
+.piece {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  opacity: 0;
+  transform: translate(var(--fx), var(--fy)) rotate(var(--fr));
+  animation: assemble 1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d) forwards;
+}
+.p1 { top: 0; left: 0; --fx: -150px; --fy: -130px; --fr: -120deg; --d: 0.1s; background: var(--accent); border-radius: 28px 0 0 0; }
+.p2 { top: 0; right: 0; --fx: 150px; --fy: -130px; --fr: 120deg; --d: 0.3s; background: var(--text); border-radius: 0 28px 0 0; }
+.p3 { bottom: 0; left: 0; --fx: -150px; --fy: 130px; --fr: 120deg; --d: 0.45s; background: var(--text); border-radius: 0 0 0 28px; }
+.p4 { bottom: 0; right: 0; --fx: 150px; --fy: 130px; --fr: -120deg; --d: 0.6s; background: var(--accent); border-radius: 0 0 28px 0; }
+
+.loader-text {
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  animation: fadeUp 0.6s 1.9s forwards;
+}
+
+@keyframes assemble {
+  to { transform: translate(0, 0) rotate(0); opacity: 1; }
+}
+@keyframes logoPulse {
+  50% { transform: scale(1.05); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piece, .loader-logo, .loader-logo::after, .loader-text {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* =========================================================
+   نسخه‌ی ۳: اسلایدر، حساب کاربری، نظرات، ورود و داشبورد
+   ========================================================= */
+
+/* ----- هدر: حساب کاربری ----- */
+.header-actions { flex-wrap: wrap; }
+.account-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0.3rem 0.5rem;
+  border-radius: 8px;
+}
+.account-link:hover, .account-link.active { background: var(--bg); }
+.account-link.logout { color: var(--muted); }
+
+/* ----- اسلایدر صفحه‌ی اصلی ----- */
+.hero-slider { position: relative; overflow: hidden; }
+.slides { position: relative; min-height: 420px; }
+.slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff;
+  background:
+    linear-gradient(120deg, rgba(255, 196, 0, 0.88), rgba(28, 28, 28, 0.82)) center / cover no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s;
+  padding: 4rem 1rem;
+}
+.slide.active { opacity: 1; visibility: visible; }
+.slide-inner { max-width: 640px; }
+.slide h1 { color: #fff; font-size: 2.2rem; margin-bottom: 0.8rem; }
+.slide p { color: #f3f3f3; margin-bottom: 1.5rem; font-size: 1.05rem; }
+.slide .btn { background: #fff; border-color: #fff; color: var(--text); }
+.slides { min-height: 440px; }
+.slide-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 2;
+}
+.slide-nav.next { left: 16px; }
+.slide-nav.prev { right: 16px; }
+.dots {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: width 0.3s, background 0.3s;
+}
+.dot.active { width: 28px; background: #fff; }
+
+/* ----- وضعیت‌ها ----- */
+.status {
+  display: inline-block;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: #eee;
+}
+.s-awaiting_receipt { background: #eee; }
+.s-receipt_submitted, .s-pending { background: #FFF1B3; }
+.s-confirmed, .s-approved { background: #D6F5DF; color: #145c2c; }
+.s-rejected { background: #FDECEA; color: #8a1c14; }
+.ok { color: var(--success); font-weight: 700; margin: 0.6rem 0; }
+.error-text { color: var(--danger); font-weight: 700; margin: 0.6rem 0; }
+.success-msg { color: var(--success); font-weight: 700; margin-bottom: 0.6rem; }
+
+/* ----- نکات پرداخت ----- */
+.notes-box {
+  background: #FFFDF2;
+  border: 1px solid #F3E3A0;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.notes-box h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+.notes { padding-right: 1.2rem; }
+.notes li { margin-bottom: 0.3rem; font-size: 0.92rem; }
+
+.need-login {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+.need-login p { margin-bottom: 1rem; color: var(--muted); }
+.actions.center { justify-content: center; }
+.actions-center { text-align: center; margin-top: 1rem; }
+
+/* ----- صفحه‌ی ورود ----- */
+.auth-card {
+  max-width: 420px;
+  margin: 3rem auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+.auth-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 1.4rem;
+}
+.auth-tabs button {
+  border: none;
+  background: none;
+  padding: 0.6rem;
+  border-radius: 9px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--muted);
+}
+.auth-tabs button.active { background: var(--card); color: var(--text); box-shadow: var(--shadow); }
+.auth-card input {
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  background: var(--bg);
+}
+.auth-card input:focus { outline: none; border-color: var(--accent); }
+
+/* ----- داشبورد ----- */
+.dash { padding: 2rem 0 3rem; }
+.dash-head { margin-bottom: 1.4rem; }
+.dash-head p { color: var(--muted); }
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.stat {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+  text-align: center;
+  font-weight: 700;
+  color: var(--muted);
+}
+.stat span {
+  display: block;
+  font-size: 1.8rem;
+  color: var(--text);
+  font-weight: 800;
+}
+.dash .card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+.dash .card h2 { font-size: 1.15rem; margin-bottom: 0.9rem; }
+.dash .form-row input:disabled { opacity: 0.6; }
+.order-row {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.7rem;
+}
+.order-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+.order-body { margin-top: 0.8rem; border-top: 1px dashed var(--border); padding-top: 0.8rem; }
+.order-body ul { padding-right: 1.2rem; color: var(--muted); font-size: 0.92rem; }
+.receipt-form {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.5rem;
+  background: var(--bg);
+  padding: 0.9rem;
+  border-radius: 10px;
+}
+.receipt-form label { font-weight: 700; font-size: 0.9rem; }
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ----- نظرات محصول ----- */
+.reviews { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2rem; margin: 1rem 0 2.5rem; }
+.reviews h2 { margin-bottom: 0.6rem; }
+.rating-summary { margin-bottom: 1.2rem; font-weight: 700; }
+.stars { color: var(--accent-dark); letter-spacing: 2px; }
+.stars.big { font-size: 1.3rem; }
+.review {
+  border-bottom: 1px solid var(--border);
+  padding: 0.9rem 0;
+}
+.review-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.review p { margin: 0.3rem 0; color: var(--muted); }
+.review small { color: #999; }
+.review-box { margin-top: 1.4rem; background: var(--bg); padding: 1.2rem; border-radius: 14px; }
+.review-form { display: grid; gap: 0.7rem; }
+.review-form label { font-weight: 700; }
+.review-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  background: #fff;
+}
+.star-input {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 0.15rem;
+}
+.star-input input { display: none; }
+.star-input label {
+  font-size: 2rem;
+  color: #d5d5d5;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.star-input input:checked ~ label,
+.star-input label:hover,
+.star-input label:hover ~ label { color: var(--accent); }
+
+@media (max-width: 760px) {
+  .slide h1 { font-size: 1.6rem; }
+  .dash-stats { grid-template-columns: 1fr; }
+  .slides { min-height: 480px; }
+}
